@@ -1,8 +1,11 @@
 package listeners;
 
+import gui.VisualWindow;
+
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -12,13 +15,17 @@ import javax.swing.JFileChooser;
 public class MyActionListener implements ActionListener
 {
 	private File file;
-	private Image image;
+	private BufferedImage image;
+	private VisualWindow vw;
+	
+	public MyActionListener(VisualWindow vw)
+	{
+		this.vw = vw;
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
-	{
-//		System.out.println("This works");
-		
+	{		
 		JFileChooser fileChooser = new JFileChooser();
 		
 		fileChooser.showOpenDialog(null);
@@ -32,12 +39,23 @@ public class MyActionListener implements ActionListener
 		{
 			e.printStackTrace();
 		}
+		vw.repaint();
 		
 	}
 	
-	public Image getImage()
+	public BufferedImage getImage()
 	{
 		return image;
+	}
+	
+	public int getImageHeight()
+	{
+		return image.getHeight(null);
+	}
+	
+	public int getImageWidth()
+	{
+		return image.getWidth(null);
 	}
 	
 }
