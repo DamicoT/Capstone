@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -16,6 +17,8 @@ public class MyActionListener implements ActionListener
 {
 	private File file;
 	private BufferedImage image;
+	private int imageHeight;
+	private int imageWidth;
 	private VisualWindow vw;
 	
 	public MyActionListener(VisualWindow vw)
@@ -34,6 +37,8 @@ public class MyActionListener implements ActionListener
 		try 
 		{
 			image = ImageIO.read(file);
+			imageHeight = image.getHeight();
+			imageWidth = image.getWidth();
 		} 
 		catch (IOException e) 
 		{
@@ -50,12 +55,12 @@ public class MyActionListener implements ActionListener
 	
 	public int getImageHeight()
 	{
-		return image.getHeight(null);
+		return imageHeight;
 	}
 	
 	public int getImageWidth()
 	{
-		return image.getWidth(null);
+		return imageWidth;
 	}
 	
 }

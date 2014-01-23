@@ -41,9 +41,9 @@ public class VisualWindow extends JPanel
 		super.paintComponents(g);
 		
 		BufferedImage image = maListener.getImage();
-//		int height = maListener.getImageHeight();
-//		int width = maListener.getImageWidth();
+		int height = maListener.getImageHeight();
+		int width = maListener.getImageWidth();
 		
-		g.drawImage(image, 0, 0, 500, 300, null);
+		g.drawImage(image, 0, 0, width, height, null);
 	}
 }
